@@ -108,8 +108,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-50 bg-white shadow-md">
+        <div className="container mx-auto px-4 py-5 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <img 
               src="https://cdn.poehali.dev/files/вкусно-и-точка.jpg" 
@@ -122,7 +122,7 @@ const Index = () => {
           <nav className="hidden md:flex gap-8">
             <button
               onClick={() => setActiveSection('home')}
-              className={`font-medium transition-colors ${
+              className={`font-semibold text-lg transition-colors ${
                 activeSection === 'home' ? 'text-primary' : 'text-foreground hover:text-primary'
               }`}
             >
@@ -130,7 +130,7 @@ const Index = () => {
             </button>
             <button
               onClick={() => setActiveSection('menu')}
-              className={`font-medium transition-colors ${
+              className={`font-semibold text-lg transition-colors ${
                 activeSection === 'menu' ? 'text-primary' : 'text-foreground hover:text-primary'
               }`}
             >
@@ -138,7 +138,7 @@ const Index = () => {
             </button>
             <button
               onClick={() => setActiveSection('about')}
-              className={`font-medium transition-colors ${
+              className={`font-semibold text-lg transition-colors ${
                 activeSection === 'about' ? 'text-primary' : 'text-foreground hover:text-primary'
               }`}
             >
@@ -148,10 +148,10 @@ const Index = () => {
 
           <Sheet>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="relative">
-                <Icon name="ShoppingCart" size={20} />
+              <Button variant="outline" size="icon" className="relative rounded-full h-12 w-12 border-2 hover:border-primary transition-colors">
+                <Icon name="ShoppingCart" size={22} />
                 {totalItems > 0 && (
-                  <Badge className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs">
+                  <Badge className="absolute -top-2 -right-2 h-6 w-6 flex items-center justify-center p-0 text-xs font-bold bg-accent border-2 border-white">
                     {totalItems}
                   </Badge>
                 )}
@@ -212,47 +212,53 @@ const Index = () => {
       </header>
 
       {activeSection === 'home' && (
-        <section className="py-20 bg-gradient-to-b from-primary/5 to-background">
+        <section className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-accent/5 to-background">
           <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold text-foreground">
+            <div className="max-w-5xl mx-auto text-center space-y-8">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-tight">
                 Закажи <span className="text-accent">вкусно</span>
-                <span className="text-primary"> прямо сейчас</span>
+                <br className="hidden md:block" />
+                <span className="text-primary">прямо сейчас</span>
               </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+              <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto font-medium">
                 Быстрая доставка любимых блюд. Свежие продукты, честные цены, безопасная оплата
               </p>
               <Button
                 size="lg"
-                className="text-lg px-8 py-6 hover-scale"
+                className="text-lg md:text-xl px-10 py-7 rounded-full font-bold shadow-lg hover:shadow-xl transition-all hover:scale-105"
                 onClick={() => setActiveSection('menu')}
               >
                 Смотреть меню
-                <Icon name="ArrowRight" size={20} className="ml-2" />
+                <Icon name="ArrowRight" size={24} className="ml-2" />
               </Button>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 mt-16 max-w-5xl mx-auto">
+            <div className="grid md:grid-cols-3 gap-6 mt-20 max-w-6xl mx-auto">
               {menuItems.slice(0, 3).map(item => (
-                <Card key={item.id} className="overflow-hidden group hover-scale cursor-pointer animate-fade-in">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="p-6 space-y-3">
-                    <div className="flex justify-between items-start">
-                      <h3 className="font-bold text-lg">{item.name}</h3>
-                      <Badge className="bg-accent text-accent-foreground hover:bg-accent/90">{item.price} ₽</Badge>
+                <Card key={item.id} className="overflow-hidden group cursor-pointer animate-fade-in border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 rounded-3xl">
+                  <div className="relative">
+                    <img
+                      src={item.image}
+                      alt={item.name}
+                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-6 space-y-4 bg-white">
+                    <div className="space-y-2">
+                      <h3 className="font-bold text-xl">{item.name}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                     </div>
-                    <p className="text-sm text-muted-foreground">{item.description}</p>
-                    <Button
-                      className="w-full"
-                      onClick={() => addToCart(item)}
-                    >
-                      <Icon name="Plus" size={16} className="mr-2" />
-                      В корзину
-                    </Button>
+                    <div className="flex items-center justify-between">
+                      <span className="text-2xl font-bold text-foreground">{item.price} ₽</span>
+                      <Button
+                        size="lg"
+                        className="rounded-full font-bold px-6"
+                        onClick={() => addToCart(item)}
+                      >
+                        <Icon name="Plus" size={18} className="mr-1" />
+                        В корзину
+                      </Button>
+                    </div>
                   </div>
                 </Card>
               ))}
@@ -262,36 +268,41 @@ const Index = () => {
       )}
 
       {activeSection === 'menu' && (
-        <section className="py-12">
+        <section className="py-12 bg-secondary/30">
           <div className="container mx-auto px-4">
-            <h2 className="text-4xl font-bold text-center mb-12">Наше меню</h2>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-center mb-16">Наше меню</h2>
             
             {categories.map(category => (
-              <div key={category} className="mb-12">
-                <h3 className="text-2xl font-bold mb-6">{category}</h3>
+              <div key={category} className="mb-16">
+                <h3 className="text-3xl font-bold mb-8 text-primary">{category}</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {menuItems
                     .filter(item => item.category === category)
                     .map(item => (
-                      <Card key={item.id} className="overflow-hidden group hover-scale cursor-pointer animate-fade-in">
-                        <img
-                          src={item.image}
-                          alt={item.name}
-                          className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                        <div className="p-6 space-y-3">
-                          <div className="flex justify-between items-start">
-                            <h3 className="font-bold text-lg">{item.name}</h3>
-                            <Badge variant="secondary">{item.price} ₽</Badge>
+                      <Card key={item.id} className="overflow-hidden group cursor-pointer animate-fade-in border-0 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 rounded-3xl">
+                        <div className="relative">
+                          <img
+                            src={item.image}
+                            alt={item.name}
+                            className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        </div>
+                        <div className="p-6 space-y-4 bg-white">
+                          <div className="space-y-2">
+                            <h3 className="font-bold text-xl">{item.name}</h3>
+                            <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                           </div>
-                          <p className="text-sm text-muted-foreground">{item.description}</p>
-                          <Button
-                            className="w-full"
-                            onClick={() => addToCart(item)}
-                          >
-                            <Icon name="Plus" size={16} className="mr-2" />
-                            В корзину
-                          </Button>
+                          <div className="flex items-center justify-between">
+                            <span className="text-2xl font-bold text-foreground">{item.price} ₽</span>
+                            <Button
+                              size="lg"
+                              className="rounded-full font-bold px-6"
+                              onClick={() => addToCart(item)}
+                            >
+                              <Icon name="Plus" size={18} className="mr-1" />
+                              В корзину
+                            </Button>
+                          </div>
                         </div>
                       </Card>
                     ))}
