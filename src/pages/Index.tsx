@@ -111,7 +111,7 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+            <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
               <span className="text-white font-bold text-xl">В</span>
             </div>
             <span className="text-2xl font-bold text-primary">Вкусно и точка</span>
@@ -214,7 +214,7 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto text-center space-y-6">
               <h1 className="text-5xl md:text-6xl font-bold text-foreground">
-                Закажи вкусно
+                Закажи <span className="text-accent">вкусно</span>
                 <span className="text-primary"> прямо сейчас</span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -241,7 +241,7 @@ const Index = () => {
                   <div className="p-6 space-y-3">
                     <div className="flex justify-between items-start">
                       <h3 className="font-bold text-lg">{item.name}</h3>
-                      <Badge variant="secondary">{item.price} ₽</Badge>
+                      <Badge className="bg-accent text-accent-foreground hover:bg-accent/90">{item.price} ₽</Badge>
                     </div>
                     <p className="text-sm text-muted-foreground">{item.description}</p>
                     <Button
