@@ -111,9 +111,11 @@ const Index = () => {
       <header className="sticky top-0 z-50 bg-white border-b shadow-sm">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-accent rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-xl">В</span>
-            </div>
+            <img 
+              src="https://cdn.poehali.dev/files/вкусно-и-точка.jpg" 
+              alt="Вкусно и точка" 
+              className="w-12 h-12 object-contain"
+            />
             <span className="text-2xl font-bold text-primary">Вкусно и точка</span>
           </div>
           
