@@ -122,8 +122,8 @@ const Index = () => {
           <nav className="hidden md:flex gap-8">
             <button
               onClick={() => setActiveSection('home')}
-              className={`font-semibold text-lg transition-colors ${
-                activeSection === 'home' ? 'text-primary' : 'text-foreground hover:text-primary'
+              className={`font-semibold text-lg px-6 py-2 rounded-full transition-all ${
+                activeSection === 'home' ? 'bg-black text-white' : 'text-foreground hover:bg-black hover:text-white'
               }`}
             >
               Главная
