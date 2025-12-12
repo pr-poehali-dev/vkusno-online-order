@@ -109,14 +109,14 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <header className="sticky top-0 z-50 bg-white shadow-md">
-        <div className="container mx-auto px-4 py-5 flex items-center justify-between">
+        <div className="container mx-auto px-4 py-5 flex items-center justify-between bg-green-600">
           <div className="flex items-center gap-2">
             <img 
               src="https://cdn.poehali.dev/files/вкусно-и-точка.jpg" 
               alt="Вкусно и точка" 
               className="w-12 h-12 object-contain"
             />
-            <span className="text-2xl font-bold text-primary">Вкусно и точка</span>
+            <span className="text-2xl font-bold text-[#ffffff]">Вкусно и точка</span>
           </div>
           
           <nav className="hidden md:flex gap-8">
@@ -216,9 +216,9 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto text-center space-y-8">
               <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold text-foreground leading-tight">
-                Закажи <span className="text-accent">вкусно</span>
+                Закажи <span className="text-[#000000]">вкусно</span>
                 <br className="hidden md:block" />
-                <span className="text-primary">прямо сейчас</span>
+                <span className="text-[#000000]">прямо сейчас</span>
               </h1>
               <p className="text-lg md:text-2xl text-muted-foreground max-w-3xl mx-auto font-medium">
                 Быстрая доставка любимых блюд. Свежие продукты, честные цены, безопасная оплата
@@ -363,7 +363,7 @@ const Index = () => {
 
       <footer className="bg-secondary py-8 mt-20">
         <div className="container mx-auto px-4 text-center text-muted-foreground">
-          <p>&copy; 2024 Вкусно и точка. Все права защищены.</p>
+          <p>© 2025 Вкусно и точка. Все права защищены.</p>
         </div>
       </footer>
     </div>
